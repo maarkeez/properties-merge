@@ -15,14 +15,27 @@
 					<th>Line</th>
 					<th>Prop. Name</th>
 					<th>Prop. Value</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let item of leftSideProperties">
-					<td>{{item.line}}</td>
-					<td>{{item.name}}</td>
-					<td>{{item.value}}</td>
+				<ng-template ngFor let-key [ngForOf]="getKeys(differencesMap)">
+				<tr *ngIf="!differencesMap.get(key).leftProperty">
+					<td>NaN</td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
+				<tr *ngIf="differencesMap.get(key).leftProperty"  [class.bg-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyLeft" [class.bg-success]="differencesMap.get(key).onlyLeft">
+					<td>{{differencesMap.get(key).leftProperty?.line}}</td>
+					<td>{{differencesMap.get(key).leftProperty?.name}}</td>
+					<td>{{differencesMap.get(key).leftProperty?.value}}</td>
+					<td>
+						<button *ngIf="!isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-xs btn-outline-secondary" (click)="choose(differencesMap.get(key).leftProperty)">Select</button>
+						<button *ngIf="isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-xs btn-secondary" (click)="choose(differencesMap.get(key).leftProperty)">Selected</button>
+					</td>
+				</tr>
+				</ng-template>
 			</tbody>
 		</table>
 	</div>
@@ -37,14 +50,29 @@
 					<th>Line</th>
 					<th>Prop. Name</th>
 					<th>Prop. Value</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let item of rightSideProperties">
-					<td>{{item.line}}</td>
-					<td>{{item.name}}</td>
-					<td>{{item.value}}</td>
+				<ng-template ngFor let-key [ngForOf]="getKeys(differencesMap)">
+				<tr *ngIf="!differencesMap.get(key).rightProperty">
+					<td>NaN</td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
+
+				<tr *ngIf="differencesMap.get(key).rightProperty" [class.bg-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyRight"
+					[class.bg-success]="differencesMap.get(key).onlyRight">
+					<td>{{differencesMap.get(key).rightProperty?.line}}</td>
+					<td>{{differencesMap.get(key).rightProperty?.name}}</td>
+					<td>{{differencesMap.get(key).rightProperty?.value}}</td>
+					<td>
+						<button *ngIf="!isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-xs btn-outline-secondary" (click)="choose(differencesMap.get(key).rightProperty)">Select</button>
+						<button *ngIf="isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-xs btn-secondary" (click)="choose(differencesMap.get(key).rightProperty)">Selected</button>
+					</td>
+				</tr>
+				</ng-template>
 			</tbody>
 		</table>
 	</div>
