@@ -61,7 +61,16 @@ export class MergeFilesComponent {
     }
 
     getKeys( map ): string[] {
-        return Array.from( map.keys() );
+        let keys: string[] = Array.from( map.keys() );
+        keys.sort(this.sortDesc );
+        return keys;
+    }
+
+    sortDesc( a: string, b: string ) {
+        if ( a > b ) {
+            return 1;
+        }
+        return -1;
     }
 
     choose( prop: Property ): void {
