@@ -1,0 +1,51 @@
+<div class="col-sm-12">
+	<h1>Let's merge those properties!</h1>
+</div>
+<div class="col-sm-6"></div>
+<delimiter></delimiter>
+
+
+<div class="col-sm-12">
+	<div class="float-left">
+		<button class="btn btn-xs btn-info" (click)="loadLeftSideProperties()">Load left prop.</button>
+		<delimiter></delimiter>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Line</th>
+					<th>Prop. Name</th>
+					<th>Prop. Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of leftSideProperties">
+					<td>{{item.line}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.value}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div class="float-right">
+		<button class="btn btn-xs btn-info" (click)="loadRightSideProperties()">Load right prop.</button>
+		<delimiter></delimiter>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Line</th>
+					<th>Prop. Name</th>
+					<th>Prop. Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of rightSideProperties">
+					<td>{{item.line}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.value}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

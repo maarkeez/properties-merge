@@ -1,0 +1,12 @@
+<div (click)="redirect(card.href)">
+	<div class="card custom-card-info"
+		style="box-shadow: 5px 5px 5px #ccc;">
+		<div class="card-header">
+			<span *ngFor="let item of card.iconList" class="m-a-0 p-a-0 custom-icon" [ngClass]="item"></span>
+			{{card.title}}
+		</div>
+		<div class="card-body">
+			<div *ngIf="card.description" class="card-text">{{card.description}}</div>
+		</div>
+	</div>
+</div>

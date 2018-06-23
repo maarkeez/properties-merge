@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Properties merge</title>
+<base href="/" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+	integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+
+	<!-- Menú flotante -->
+	<nav class="navbar navbar-expand-sm navbar-inverse" style="max-height: 50px">
+		<!-- Brand -->
+		<span style="min-width: 20px;"> </span>
+		<a class="navbar-brand " href="#">
+			<i class="fas fa-home" style="color: white"></i>
+		</a>
+
+
+		<!-- Links -->
+		<ul class="navbar-nav mr-auto">
+
+			<!-- Client -->
+			<li class="nav-item dropdown">
+				<a class="nav-link" href="/merge-files" id="navbardrop">Merge files</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container-fluid" style="min-height: 707px">
+		<div class="container" style="min-height: 40px;"></div>
+		<div class="container-fluid">
+			<app-root></app-root>
+		</div>
+		<div class="container" style="min-height: 40px;"></div>
+
+	</div>
+
+
+	<!-- Espacio en blanco previo a pie de página -->
+	<div class="col-sm-12" style="min-height: 20px; background-color: white;"></div>
+
+	<!-- Pie de página -->
+	<div class="col-sm-12" style="min-height: 150px; background-color: #182d4f;"></div>
+</body>
+</html>

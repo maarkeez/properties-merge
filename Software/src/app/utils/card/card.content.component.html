@@ -1,0 +1,11 @@
+<div>
+	<div class="card" style="box-shadow: 5px 5px 5px #ccc;">
+		<div class="card-header">
+			<template *ngIf="iconList"> <span *ngFor="let item of iconList" class="m-a-0 p-a-0 custom-icon" [ngClass]="item"></span> </template>
+			{{title}}
+		</div>
+		<div class="card-body">
+			<ng-content></ng-content>
+		</div>
+	</div>
+</div>

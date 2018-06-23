@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+.custom-nav{
+	background-color:#0068AB;
+	border-color: #0068AB;
+}
+
+
+.navbar-inverse {
+	background-color:#182d4f;
+    border-color: #182d4f;
+}
+
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #008CCD;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff;
+   background-color: #005388;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}

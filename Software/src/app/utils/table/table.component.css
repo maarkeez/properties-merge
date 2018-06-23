@@ -1,0 +1,15 @@
+.custom-row {
+	
+}
+
+.custom-row:hover {
+	background-color: #b2b2b2;
+}
+
+.selected-row {
+	background-color: #b7d9b3;
+}
+
+.custom-table {
+	white-space: nowrap;
+}

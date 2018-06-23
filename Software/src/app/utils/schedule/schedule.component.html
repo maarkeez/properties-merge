@@ -1,0 +1,33 @@
+<div class="col-sm-12 p-0 m-0">
+
+	<div class="col-sm-12 form-inline p-0 m-0">
+		<div class="col-sm-5 p-0 m-0">
+			<input type="button" class="btn btn-info" (click)="open()" value="Select time" />
+			<select [(ngModel)]="selectedHour" class="form-control">
+				<option *ngFor="let item of horas">{{item}}</option>
+			</select>
+			<select [(ngModel)]="selectedMinutes" class="form-control">
+				<option *ngFor="let item of minutos">{{item}}</option>
+			</select>
+
+			<select class="form-control">
+				<option *ngFor="let item of dias">{{item}}</option>
+			</select>
+
+		</div>
+		<div class="col-sm-3 p-0 m-0">
+			<input type="button" class="btn btn-info" value="Add" />
+		</div>
+	</div>
+
+	<div class="col-sm-12" style="min-height: 20px"></div>
+	<div class="col-sm-12  p-0 m-0">
+		<h5>Lunes</h5>
+	</div>
+</div>
+
+
+<span>{{selectedHour}}</span>
+:
+<span>{{selectedMinutes}}</span>
+
