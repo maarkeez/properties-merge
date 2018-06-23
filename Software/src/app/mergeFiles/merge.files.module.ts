@@ -6,12 +6,13 @@ import { DelimiterComponent } from "../utils/delimiter/delimiter.component";
 
 //Components
 import { MergeFilesComponent } from "./merge.files.component";
+import { HttpClient } from "@angular/common/http";
 
 
 @NgModule({
     imports: [CommonModule, HttpModule, FormsModule],
     exports: [MergeFilesComponent],
     declarations: [MergeFilesComponent,DelimiterComponent],
-    providers: []
+    providers: [HttpClient]
 })
 export class MergeFilesModule { }

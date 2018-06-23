@@ -9,6 +9,9 @@ import { MergeFilesComponent } from "./mergeFiles/merge.files.component";
 
 //Modules
 import { MergeFilesModule } from "./mergeFiles/merge.files.module";
+import { HttpClient } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
+
 
 //Services
 
@@ -19,6 +22,7 @@ import { MergeFilesModule } from "./mergeFiles/merge.files.module";
         BrowserModule,
         FormsModule,
         MergeFilesModule,
+        HttpClientModule,
         RouterModule.forRoot( [
             { path: "merge-files", component: MergeFilesComponent },
             { path: "**", redirectTo: "/" }

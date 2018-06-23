@@ -7,7 +7,9 @@
 
 <div class="col-sm-12">
 	<div class="float-left">
-		<button class="btn btn-xs btn-info" (click)="loadLeftSideProperties()">Load left prop.</button>
+		<div class="form-group">
+			<input type="file" class="form-control-file" id="fileLeft" (change)="handleLeftFileInput($event.target.files)">
+		</div>
 		<delimiter></delimiter>
 		<table class="table table-bordered">
 			<thead>
@@ -21,18 +23,23 @@
 			<tbody>
 				<ng-template ngFor let-key [ngForOf]="getKeys(differencesMap)">
 				<tr *ngIf="!differencesMap.get(key).leftProperty">
-					<td>NaN</td>
 					<td></td>
 					<td></td>
 					<td></td>
+					<td>
+						<button class="btn btn btn-sm btn-info" disabled>NaN</button>
+					</td>
 				</tr>
-				<tr *ngIf="differencesMap.get(key).leftProperty"  [class.bg-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyLeft" [class.bg-success]="differencesMap.get(key).onlyLeft">
+				<tr *ngIf="differencesMap.get(key).leftProperty" [class.bg-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyLeft"
+					[class.bg-success]="differencesMap.get(key).onlyLeft">
 					<td>{{differencesMap.get(key).leftProperty?.line}}</td>
 					<td>{{differencesMap.get(key).leftProperty?.name}}</td>
 					<td>{{differencesMap.get(key).leftProperty?.value}}</td>
 					<td>
-						<button *ngIf="!isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-xs btn-outline-secondary" (click)="choose(differencesMap.get(key).leftProperty)">Select</button>
-						<button *ngIf="isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-xs btn-secondary" (click)="choose(differencesMap.get(key).leftProperty)">Selected</button>
+						<button *ngIf="!isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-sm btn-outline-secondary"
+							(click)="choose(differencesMap.get(key).leftProperty)">Select</button>
+						<button *ngIf="isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-sm btn-secondary"
+							(click)="choose(differencesMap.get(key).leftProperty)">Selected</button>
 					</td>
 				</tr>
 				</ng-template>
@@ -42,7 +49,9 @@
 
 
 	<div class="float-right">
-		<button class="btn btn-xs btn-info" (click)="loadRightSideProperties()">Load right prop.</button>
+		<div class="form-group">
+			<input type="file" class="form-control-file" id="fileRight" (change)="handleRightFileInput($event.target.files)">
+		</div>
 		<delimiter></delimiter>
 		<table class="table table-bordered">
 			<thead>
@@ -56,10 +65,13 @@
 			<tbody>
 				<ng-template ngFor let-key [ngForOf]="getKeys(differencesMap)">
 				<tr *ngIf="!differencesMap.get(key).rightProperty">
-					<td>NaN</td>
 					<td></td>
 					<td></td>
 					<td></td>
+					<td>
+						<button class="btn btn btn-sm btn-info" disabled>NaN</button>
+					</td>
+
 				</tr>
 
 				<tr *ngIf="differencesMap.get(key).rightProperty" [class.bg-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyRight"
@@ -68,8 +80,10 @@
 					<td>{{differencesMap.get(key).rightProperty?.name}}</td>
 					<td>{{differencesMap.get(key).rightProperty?.value}}</td>
 					<td>
-						<button *ngIf="!isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-xs btn-outline-secondary" (click)="choose(differencesMap.get(key).rightProperty)">Select</button>
-						<button *ngIf="isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-xs btn-secondary" (click)="choose(differencesMap.get(key).rightProperty)">Selected</button>
+						<button *ngIf="!isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-sm btn-outline-secondary"
+							(click)="choose(differencesMap.get(key).rightProperty)">Select</button>
+						<button *ngIf="isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-sm btn-secondary"
+							(click)="choose(differencesMap.get(key).rightProperty)">Selected</button>
 					</td>
 				</tr>
 				</ng-template>
@@ -77,3 +91,11 @@
 		</table>
 	</div>
 </div>
+<!-- <div class="col-sm-12"> -->
+<button class="btn btn-lg btn-outline-primary"  style="width:100%"(click)="merge()">Merge</button>
+<div class="form-group">
+	<label for="merged">Merged properties:</label>
+	<textarea class="form-control" id="merged" rows="20" cols="200">{{merged}}</textarea>
+</div>
+
+<!-- </div> -->
