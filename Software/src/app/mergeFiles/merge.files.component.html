@@ -1,8 +1,47 @@
-<div class="col-sm-12">
-	<h1>Let's merge those properties!</h1>
+<div class="row">
+	<div class="col-sm-2">
+		<h1>Mergeator!</h1>
+	</div>
+	<div class="col-sm-4"></div>
+	<div class="col-sm-3">
+		<div class="form-check">
+			<label class="form-check-label">
+				<input class="form-check-input" type="checkbox" id="showEquals" [(ngModel)]="showEquals" />
+				Show equals
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+				<input class="form-check-input" type="checkbox" id="showDiff" [(ngModel)]="showDiff" />
+				Show differences
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+				<input class="form-check-input" type="checkbox" id="showLeft" [(ngModel)]="showLeft" />
+				Show just in left
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+				<input class="form-check-input" type="checkbox" id="showRight" [(ngModel)]="showRight" />
+				Show just in right
+			</label>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+			<input type="file" class="form-control-file" id="fileLeft" (change)="handleLeftFileInput($event.target.files)">
+		</div>
+		<div class="form-group">
+			<input type="file" class="form-control-file" id="fileRight" (change)="handleRightFileInput($event.target.files)">
+		</div>
+	</div>
 </div>
-<div class="col-sm-6"></div>
-<delimiter></delimiter>
+
 
 <div *ngIf="errorMessage" class="alert alert-warning alert-dismissible fade show" role="alert">
 	<strong>Property error!</strong>
@@ -11,20 +50,11 @@
 		<span aria-hidden="true">&times;</span>
 	</button>
 </div>
-<delimiter></delimiter>
+<delimiter *ngIf="errorMessage"></delimiter>
 
-<div class="col-sm-12">
-Show equals<input type="checkbox" id="showEquals" [(ngModel)]="showEquals"/>
-Show differences<input type="checkbox" id="showDiff" [(ngModel)]="showDiff"/>
-Show just in left<input type="checkbox" id="showLeft" [(ngModel)]="showLeft"/>
-Show just in right<input type="checkbox" id="showRight" [(ngModel)]="showRight"/>
-</div>
+<div class="row">
+	<div *ngIf="leftSideMap.size > 0" class="col-sm-6">
 
-<div class="col-sm-12">
-	<div class="float-left">
-		<div class="form-group">
-			<input type="file" class="form-control-file" id="fileLeft" (change)="handleLeftFileInput($event.target.files)">
-		</div>
 		<delimiter></delimiter>
 		<table class="table table-bordered">
 			<thead>
@@ -63,10 +93,8 @@ Show just in right<input type="checkbox" id="showRight" [(ngModel)]="showRight"/
 	</div>
 
 
-	<div class="float-right">
-		<div class="form-group">
-			<input type="file" class="form-control-file" id="fileRight" (change)="handleRightFileInput($event.target.files)">
-		</div>
+	<div *ngIf="rightSideMap.size > 0" class="col-sm-6">
+
 		<delimiter></delimiter>
 		<table class="table table-bordered">
 			<thead>
@@ -106,11 +134,18 @@ Show just in right<input type="checkbox" id="showRight" [(ngModel)]="showRight"/
 		</table>
 	</div>
 </div>
-<!-- <div class="col-sm-12"> -->
-<button class="btn btn-lg btn-outline-primary" style="width: 100%" (click)="merge()">Merge</button>
-<div class="form-group">
-	<label for="merged">Merged properties:</label>
-	<textarea class="form-control" id="merged" rows="20" cols="200">{{merged}}</textarea>
+<div *ngIf="differencesMap.size > 0" class="row">
+	<div class="col-sm-12">
+		<button class="btn btn-lg btn-outline-primary col-sm-12" (click)="merge()">Merge</button>
+	</div>
+
+	<delimiter></delimiter>
+	<div class="col-sm-12">
+		<div class="form-group">
+			<label for="merged">Merged properties:</label>
+			<textarea class="form-control" id="merged" rows="20" cols="200">{{merged}}</textarea>
+		</div>
+	</div>
 </div>
 
 <!-- </div> -->
