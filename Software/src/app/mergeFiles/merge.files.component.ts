@@ -5,6 +5,7 @@ import { Property } from "./property.model";
 import { PropertyDifference } from "./property.difference.model";
 import { HttpClient } from "@angular/common/http";
 import { PropertyLoader } from "./property.loader";
+import { PropertyDifferenceFilter } from "./property.difference.filter";
 
 
 @Component( {
@@ -20,6 +21,13 @@ export class MergeFilesComponent {
     differencesMap: Map<string, PropertyDifference> = new Map<string, PropertyDifference>();
     merged: string = "";
     errorMessage: string = "";
+    showEquals: boolean = true;
+    showDiff: boolean = true;
+    showLeft: boolean = true;
+    showRight: boolean = true;
+
+    private propDiffFilter: PropertyDifferenceFilter = new PropertyDifferenceFilter();
+
     // MARK: - IBActions
 
     // MARK: - LIFE VC
@@ -72,6 +80,14 @@ export class MergeFilesComponent {
         keys.sort( this.sortDesc );
         return keys;
     }
+
+    getKeysFiltered( side: string, showSideOnly: boolean ): string[] {
+        let keys: string[] = Array.from( this.differencesMap.keys() );
+        keys.sort( this.sortDesc );
+
+        return this.propDiffFilter.transform( this.differencesMap, keys, this.showEquals, this.showDiff, side, showSideOnly );
+    }
+
 
     sortDesc( a: string, b: string ) {
         if ( a > b ) {

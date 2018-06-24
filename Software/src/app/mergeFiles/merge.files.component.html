@@ -14,6 +14,13 @@
 <delimiter></delimiter>
 
 <div class="col-sm-12">
+Show equals<input type="checkbox" id="showEquals" [(ngModel)]="showEquals"/>
+Show differences<input type="checkbox" id="showDiff" [(ngModel)]="showDiff"/>
+Show just in left<input type="checkbox" id="showLeft" [(ngModel)]="showLeft"/>
+Show just in right<input type="checkbox" id="showRight" [(ngModel)]="showRight"/>
+</div>
+
+<div class="col-sm-12">
 	<div class="float-left">
 		<div class="form-group">
 			<input type="file" class="form-control-file" id="fileLeft" (change)="handleLeftFileInput($event.target.files)">
@@ -29,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<ng-template ngFor let-key [ngForOf]="getKeys(differencesMap)">
+				<ng-template ngFor let-key [ngForOf]="getKeysFiltered('left',showLeft)">
 				<tr *ngIf="!differencesMap.get(key).leftProperty">
 					<td></td>
 					<td></td>
@@ -71,7 +78,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<ng-template ngFor let-key [ngForOf]="getKeys(differencesMap)">
+				<ng-template ngFor let-key [ngForOf]="getKeysFiltered('right',showRight)">
 				<tr *ngIf="!differencesMap.get(key).rightProperty">
 					<td></td>
 					<td></td>
