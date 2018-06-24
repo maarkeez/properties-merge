@@ -25,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';  // replaces previous H
         HttpClientModule,
         RouterModule.forRoot( [
             { path: "merge-files", component: MergeFilesComponent },
-            { path: "**", redirectTo: "/" }
+            { path: "**", redirectTo: "merge-files" }
             
         ] )
     ],
