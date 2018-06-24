@@ -4,6 +4,14 @@
 <div class="col-sm-6"></div>
 <delimiter></delimiter>
 
+<div *ngIf="errorMessage" class="alert alert-warning alert-dismissible fade show" role="alert">
+	<strong>Property error!</strong>
+	{{errorMessage}}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<delimiter></delimiter>
 
 <div class="col-sm-12">
 	<div class="float-left">
@@ -92,7 +100,7 @@
 	</div>
 </div>
 <!-- <div class="col-sm-12"> -->
-<button class="btn btn-lg btn-outline-primary"  style="width:100%"(click)="merge()">Merge</button>
+<button class="btn btn-lg btn-outline-primary" style="width: 100%" (click)="merge()">Merge</button>
 <div class="form-group">
 	<label for="merged">Merged properties:</label>
 	<textarea class="form-control" id="merged" rows="20" cols="200">{{merged}}</textarea>

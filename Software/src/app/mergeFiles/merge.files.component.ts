@@ -19,17 +19,24 @@ export class MergeFilesComponent {
     rightSideMap: Map<string, Property> = new Map<string, Property>();
     differencesMap: Map<string, PropertyDifference> = new Map<string, PropertyDifference>();
     merged: string = "";
+    errorMessage: string = "";
     // MARK: - IBActions
 
     // MARK: - LIFE VC
     constructor() { }
     // MARK: - Utils
     loadLeftSideProperties( properties: Property[] ) {
-        for ( let i = 0; i < properties.length; i++ ) {
-            let property = properties[i];
-            this.leftSideMap.set( property.name, property );
+        try {
+            for ( let i = 0; i < properties.length; i++ ) {
+                let property = properties[i];
+                this.leftSideMap.set( property.name, property );
+            }
+            this.checkDifferences();
+
+
+        } catch ( e ) {
+            this.errorMessage = e;
         }
-        this.checkDifferences();
     }
 
     loadRightSideProperties( properties: Property[] ) {
@@ -62,7 +69,7 @@ export class MergeFilesComponent {
 
     getKeys( map ): string[] {
         let keys: string[] = Array.from( map.keys() );
-        keys.sort(this.sortDesc );
+        keys.sort( this.sortDesc );
         return keys;
     }
 

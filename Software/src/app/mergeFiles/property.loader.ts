@@ -1,5 +1,5 @@
 import { Property } from "./property.model";
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 
 export class PropertyLoader {
@@ -21,11 +21,13 @@ export class PropertyLoader {
         return properties;
     }
 
-    
+
 
 
     private buildProperty( lineNumber: number, line: string ): Property {
-
+        if ( !line.includes( this.propertySeparator ) ) {
+            throw("Line: ["+line+"], does not includes property separator: ["+this.propertySeparator+"]");
+        }
         let splitted: string[] = line.split( this.propertySeparator );
         let name = splitted[0].trim();
 

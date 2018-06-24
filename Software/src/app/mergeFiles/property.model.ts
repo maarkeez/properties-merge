@@ -3,5 +3,7 @@ export class Property {
         public line: number,
         public name: string,
         public value: string,
-    ) { }
+    ) { 
+        
+    }
 }
