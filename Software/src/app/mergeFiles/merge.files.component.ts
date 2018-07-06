@@ -23,7 +23,7 @@ export class MergeFilesComponent {
     differencesMap: Map<string, PropertyDifference> = new Map<string, PropertyDifference>();
     merged: string = "";
     errorMessage: string = "";
-    showEquals: boolean = true;
+    showEquals: boolean = false;
     showDiff: boolean = true;
     showLeft: boolean = true;
     showRight: boolean = true;
