@@ -1,7 +1,5 @@
 # Properties merge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
-
 ## Description
 
 Can merge 2 properties files. Allows filtering by:
