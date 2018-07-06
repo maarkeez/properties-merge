@@ -1,9 +1,12 @@
+
 <div class="col-sm-12  p-0 m-0">
 	<div class="col-sm-2 p-0 m-0">
 		<h1>Mergeator!</h1>
 	</div>
+
 	<div class="row">
 		<div class="col-sm-4 float-left">
+
 
 			<div class="form-check">
 				<label class="form-check-label">
@@ -12,7 +15,11 @@
 				</label>
 			</div>
 			<div class="form-group">
-				<input type="file" class="form-control-file" id="fileLeft" (change)="handleLeftFileInput($event.target.files)">
+				<input type="file" name="fileLeft" class="inputfile" id="fileLeft" (change)="handleLeftFileInput($event.target.files)" />
+				<label class="btn btn-sm btn-info" for="fileLeft">
+					<i class="fas fa-upload"></i>
+					Select left file
+				</label>
 			</div>
 		</div>
 		<div class="col-sm-4">
@@ -39,7 +46,11 @@
 				</label>
 			</div>
 			<div class="form-group">
-				<input type="file" class="form-control-file" id="fileRight" (change)="handleRightFileInput($event.target.files)">
+				<input type="file" name="filefileRightLeft" class="inputfile" id="fileRight" (change)="handleRightFileInput($event.target.files)" />
+				<label class="btn btn-sm btn-info" for="fileRight">
+					<i class="fas fa-upload"></i>
+					Select right file
+				</label>
 			</div>
 		</div>
 	</div>
@@ -143,19 +154,27 @@
 	</div>
 </div>
 <div *ngIf="differencesMap.size > 0" class="row">
-		<delimiter></delimiter>
+	<delimiter></delimiter>
 
 	<div class="col-sm-12">
-		<button class="btn btn-lg btn-outline-primary col-sm-12" (click)="merge()">Merge</button>
+		<button class="btn btn-lg btn-outline-info col-sm-12" (click)="merge()">Merge</button>
 	</div>
 
 	<delimiter></delimiter>
 	<div class="col-sm-12">
 		<div class="form-group">
 			<label for="merged">Merged properties:</label>
-			<textarea class="form-control" id="merged" rows="20" cols="200">{{merged}}</textarea>
+			<textarea class="form-control" id="merged" rows="20" cols="200" [(ngModel)]='merged'></textarea>
 		</div>
 	</div>
+
+	<delimiter></delimiter>
+	<div class="col-sm-12">
+		<button type="button" class="btn btn-sm btn-info" (click)="download()">
+			<i class="fas fa-download"></i>
+			Save
+		</button>
+	</div>
+
 </div>
 
-<!-- </div> -->

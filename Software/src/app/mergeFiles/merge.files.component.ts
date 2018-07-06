@@ -161,4 +161,20 @@ export class MergeFilesComponent {
             }
         }
     }
+
+    download() {
+        let text = this.merged;
+        let blob = new Blob( [text], {
+            type: "text/plain"
+        } );
+        let anchor = document.createElement( "a" );
+        let timeStamp = new Date().toLocaleDateString();
+        anchor.download = "merged_" + timeStamp  + ".txt";
+        anchor.href = window.URL.createObjectURL( blob );
+        anchor.target = "_blank";
+        anchor.style.display = "none"; // just to be safe!
+        document.body.appendChild( anchor );
+        anchor.click();
+        document.body.removeChild( anchor );
+    }
 }
