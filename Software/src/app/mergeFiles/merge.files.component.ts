@@ -11,7 +11,9 @@ import { PropertyDifferenceFilter } from "./property.difference.filter";
 @Component( {
     selector: "merge-files",
     moduleId: module.id,
-    templateUrl: "./merge.files.component.html"
+    templateUrl: "./merge.files.component.html",
+    styleUrls: ['merge.files.component.css']
+
 } )
 export class MergeFilesComponent {
 

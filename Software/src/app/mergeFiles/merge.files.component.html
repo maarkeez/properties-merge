@@ -53,85 +53,90 @@
 <delimiter *ngIf="errorMessage"></delimiter>
 
 <div class="row">
-	<div *ngIf="leftSideMap.size > 0" class="col-sm-6">
+	<div *ngIf="leftSideMap.size > 0" class="col-sm-6 custom-table-div">
 
 		<delimiter></delimiter>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Line</th>
-					<th>Prop. Name</th>
-					<th>Prop. Value</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<ng-template ngFor let-key [ngForOf]="getKeysFiltered('left',showLeft)">
-				<tr *ngIf="!differencesMap.get(key).leftProperty">
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<button class="btn btn btn-sm btn-info" disabled>NaN</button>
-					</td>
-				</tr>
-				<tr *ngIf="differencesMap.get(key).leftProperty" [class.bg-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyLeft"
-					[class.bg-success]="differencesMap.get(key).onlyLeft">
-					<td>{{differencesMap.get(key).leftProperty?.line}}</td>
-					<td>{{differencesMap.get(key).leftProperty?.name}}</td>
-					<td>{{differencesMap.get(key).leftProperty?.value}}</td>
-					<td>
-						<button *ngIf="!isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-sm btn-outline-secondary"
-							(click)="choose(differencesMap.get(key).leftProperty)">Select</button>
-						<button *ngIf="isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-sm btn-secondary"
-							(click)="choose(differencesMap.get(key).leftProperty)">Selected</button>
-					</td>
-				</tr>
-				</ng-template>
-			</tbody>
-		</table>
+		<div class="table-responsive">
+			<table class="table table-bordered   table-hover ">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Line</th>
+						<th>Prop. Name</th>
+						<th>Prop. Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<ng-template ngFor let-key [ngForOf]="getKeysFiltered('left',showLeft)">
+					<tr *ngIf="!differencesMap.get(key).leftProperty">
+						<td>
+							<button class="btn btn btn-sm btn-info" disabled>NaN</button>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+
+					</tr>
+					<tr *ngIf="differencesMap.get(key).leftProperty" [class.table-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyLeft"
+						[class.table-success]="differencesMap.get(key).onlyLeft">
+						<td>
+							<button *ngIf="!isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-sm btn-outline-secondary"
+								(click)="choose(differencesMap.get(key).leftProperty)">Select</button>
+							<button *ngIf="isChoosed(differencesMap.get(key).leftProperty)" class="btn btn-sm btn-secondary"
+								(click)="choose(differencesMap.get(key).leftProperty)">Selected</button>
+						</td>
+						<td>{{differencesMap.get(key).leftProperty?.line}}</td>
+						<td>{{differencesMap.get(key).leftProperty?.name}}</td>
+						<td>{{differencesMap.get(key).leftProperty?.value}}</td>
+					</tr>
+					</ng-template>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 
-	<div *ngIf="rightSideMap.size > 0" class="col-sm-6">
+	<div *ngIf="rightSideMap.size > 0" class="col-sm-6  custom-table-div">
 
 		<delimiter></delimiter>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Line</th>
-					<th>Prop. Name</th>
-					<th>Prop. Value</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<ng-template ngFor let-key [ngForOf]="getKeysFiltered('right',showRight)">
-				<tr *ngIf="!differencesMap.get(key).rightProperty">
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<button class="btn btn btn-sm btn-info" disabled>NaN</button>
-					</td>
+		<div class="table-responsive">
 
-				</tr>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Line</th>
+						<th>Prop. Name</th>
+						<th>Prop. Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<ng-template ngFor let-key [ngForOf]="getKeysFiltered('right',showRight)">
+					<tr *ngIf="!differencesMap.get(key).rightProperty">
+						<td>
+							<button class="btn btn btn-sm btn-info" disabled>NaN</button>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
 
-				<tr *ngIf="differencesMap.get(key).rightProperty" [class.bg-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyRight"
-					[class.bg-success]="differencesMap.get(key).onlyRight">
-					<td>{{differencesMap.get(key).rightProperty?.line}}</td>
-					<td>{{differencesMap.get(key).rightProperty?.name}}</td>
-					<td>{{differencesMap.get(key).rightProperty?.value}}</td>
-					<td>
-						<button *ngIf="!isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-sm btn-outline-secondary"
-							(click)="choose(differencesMap.get(key).rightProperty)">Select</button>
-						<button *ngIf="isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-sm btn-secondary"
-							(click)="choose(differencesMap.get(key).rightProperty)">Selected</button>
-					</td>
-				</tr>
-				</ng-template>
-			</tbody>
-		</table>
+					<tr *ngIf="differencesMap.get(key).rightProperty" [class.table-warning]="!differencesMap.get(key).equal && !differencesMap.get(key).onlyRight"
+						[class.table-success]="differencesMap.get(key).onlyRight">
+						<td>
+							<button *ngIf="!isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-sm btn-outline-secondary"
+								(click)="choose(differencesMap.get(key).rightProperty)">Select</button>
+							<button *ngIf="isChoosed(differencesMap.get(key).rightProperty)" class="btn btn-sm btn-secondary"
+								(click)="choose(differencesMap.get(key).rightProperty)">Selected</button>
+						</td>
+						<td>{{differencesMap.get(key).rightProperty?.line}}</td>
+						<td>{{differencesMap.get(key).rightProperty?.name}}</td>
+						<td>{{differencesMap.get(key).rightProperty?.value}}</td>
+					</tr>
+					</ng-template>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 <div *ngIf="differencesMap.size > 0" class="row">
